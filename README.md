@@ -1,3 +1,3 @@
-# Assembly codes
+# Assembly
 
-Assembly codes examples that a write while I am reading Low-Level Programming by Igor Zhirkov
+Assembly code examples that a write while I am reading Low-Level Programming by Igor Zhirkov
