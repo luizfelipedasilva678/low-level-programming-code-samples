@@ -7,7 +7,14 @@ exit:
 
 string_length:
     xor rax, rax
-    ret
+
+    .loop:
+        cmp byte [rdi + rax], 0
+        je .end
+        inc rax
+        jnz .loop
+    .end:
+        ret
 
 print_string:
     xor rax, rax
