@@ -3,6 +3,7 @@ section .text
 exit:
     mov rax,60
     syscall
+    ret
 
 string_length:
     xor rax, rax
