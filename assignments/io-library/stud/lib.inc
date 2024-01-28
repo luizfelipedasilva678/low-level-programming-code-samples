@@ -16,10 +16,45 @@ string_length:
     .end:
         ret
 
-print_string:
-    xor rax, rax
-    ret
 
+print_string:
+    push rdi
+    call string_length
+    pop rsi
+    mov rdx, rax
+    mov rax, 1
+    mov rdi, 1
+    syscall
+    ret
+    
+
+;;Another solution for print_string
+
+;;print_string:
+    ;;xor rax, rax
+    ;;mov rcx, rdi
+
+    ;;.loop:
+       ;;cmp byte [rcx + rax], 0
+        
+        ;;je .end
+
+        ;;lea rsi, [rcx + rax]
+
+        ;;push rax
+            ;;mov rax, 1
+            ;;mov rdi, 1
+            ;;mov rdx, 1
+
+            ;;push rcx
+            ;;syscall
+            ;;pop rcx
+
+        ;;pop rax
+        ;;inc rax
+        ;;jnz .loop
+    ;;.end:
+        ;;ret
 
 print_char:
     xor rax, rax
