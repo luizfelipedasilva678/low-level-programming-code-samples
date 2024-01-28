@@ -57,7 +57,10 @@ print_string:
         ;;ret
 
 print_char:
-    xor rax, rax
+    push rdi
+    mov rdi, rsp
+    call print_string
+    pop rdi
     ret
 
 print_newline:
