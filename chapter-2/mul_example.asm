@@ -1,3 +1,5 @@
+;; Note: the result will be converted to ascii character
+
 global _start
 
 section .data
