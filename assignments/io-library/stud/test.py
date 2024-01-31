@@ -190,6 +190,20 @@ tests=[ Test('string_length',
         xor rdi, rdi
         syscall""", 
         lambda i,o,r: i == o),
+        
+        Test('print_uint',
+            lambda v: """section .text
+        %include "lib.inc"
+        global _start 
+        _start:
+        """ + before_call + """
+        mov rdi, """ + v + """
+        call print_uint
+        """ + after_call + """
+        mov rax, 60
+        xor rdi, rdi
+        syscall""", 
+        lambda i, o, r: o == str(unsigned_reinterpret(int(i)))),
 
         Test('string_copy',
             lambda v: """
@@ -215,19 +229,7 @@ tests=[ Test('string_length',
         lambda i,o,r: i == o),
 
         
-        Test('print_uint',
-            lambda v: """section .text
-        %include "lib.inc"
-        global _start 
-        _start:
-        """ + before_call + """
-        mov rdi, """ + v + """
-        call print_uint
-        """ + after_call + """
-        mov rax, 60
-        xor rdi, rdi
-        syscall""", 
-        lambda i, o, r: o == str(unsigned_reinterpret(int(i)))),
+        
         
         Test('print_int',
             lambda v: """section .text

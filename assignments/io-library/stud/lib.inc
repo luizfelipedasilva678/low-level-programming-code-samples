@@ -70,7 +70,28 @@ print_newline:
 
 
 print_uint:
-    xor rax, rax
+    mov rax, rdi
+    mov rdi, rsp
+    push 0
+    sub rsp, 16
+
+    dec rdi
+    mov r8, 10
+    
+    .loop:
+        xor rdx, rdx
+        div r8
+        or dl, 48 ;; This gives the ASCII code
+        dec rdi
+        mov [rdi], dl
+        test rax, rax
+        jnz .loop
+
+
+    call print_string
+
+    add rsp, 24
+
     ret
 
 
