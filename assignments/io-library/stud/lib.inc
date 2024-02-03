@@ -116,8 +116,8 @@ read_char:
     ret
 
 read_word:
-    push r14
-    push r15
+    push r14 ;; Saving register value
+    push r15 ;; Saving register value
     xor r14, r14
     mov r15, rsi
     dec r15
@@ -170,8 +170,8 @@ read_word:
 
     .D:
     xor rax, rax
-    pop r15
-    pop r14
+    pop r15 ;; Restoring register value
+    pop r14 ;; Restoring register value
     ret
 
 string_equals:
