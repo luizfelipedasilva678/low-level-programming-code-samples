@@ -105,17 +105,25 @@ print_int:
     neg rdi
     call print_uint
 
+read_char:
+    push 0
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, rsp
+    mov rdx, 1
+    syscall
+    pop rax
+    ret
+
+read_word:
+    ret
+
 string_equals:
     xor rax, rax
     ret
 
 
-read_char:
-    xor rax, rax
-    ret 
 
-read_word:
-    ret
 
 ; rdi points to a string
 ; returns rax: number, rdx : length
