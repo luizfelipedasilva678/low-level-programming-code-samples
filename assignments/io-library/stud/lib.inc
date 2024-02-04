@@ -175,8 +175,18 @@ read_word:
     ret
 
 string_equals:
-    xor rax, rax
+    mov al, byte [rdi]
+    cmp al, byte [rsi]
+    jne .no
+    inc rdi
+    inc rsi
+    test al, al
+    jnz string_equals
+    mov rax, 1
     ret
+    .no:
+    xor rax, rax
+    ret 
 
 
 parse_uint:
