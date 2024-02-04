@@ -55,7 +55,7 @@ _start:
         mov al, [str1 + r8]
         mov cl, [str2 + r8]
 
-        cmp al, al
+        cmp al, cl
         jnz not_equal
 
         inc r8
