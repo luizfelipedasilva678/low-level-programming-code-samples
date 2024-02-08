@@ -2,7 +2,6 @@
 %define PROT_READ 0x1
 %define MAP_PRIVATE 0x2
 
-
 global _start
 
 section .data
