@@ -186,7 +186,7 @@ string_equals:
     ret
     .no:
     xor rax, rax
-    ret 
+    ret
 
 
 parse_uint:
@@ -228,7 +228,7 @@ parse_int:
 
     .error:
     xor rax, rax
-    ret  
+    ret
 
 
 string_copy:
@@ -244,17 +244,17 @@ string_copy:
     cmp rax, rdx
     jae .too_long  ; we also need to store null-terminator
     
-    push rsi 
+    push rsi
 
-        .loop: 
+        .loop:
         mov dl, byte[rdi]
         mov byte[rsi], dl
         inc rdi
         inc rsi
         test dl, dl
-        jnz .loop 
+        jnz .loop
 
-    pop rax 
+    pop rax
     ret
 
     .too_long:
