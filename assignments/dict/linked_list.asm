@@ -36,7 +36,7 @@ _start:
         mov rdx, 1
         syscall
 
-        add r8, 8
+        add r8, OFFSET
         cmp qword [x1 + r8 * SCALE], 0 
         jz end
     jmp .loop    
