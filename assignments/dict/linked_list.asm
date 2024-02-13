@@ -7,19 +7,23 @@ section .text
 
 x1: 
     dq x2
-    dq 48
+    dq 48 ;; Zero
 
 x2:
     dq x3
-    dq 49
+    dq 49 ;; One
 
 x3:
     dq x4
-    dq 50
+    dq 50 ;; Two
 
 x4:
+    dq x5
+    dq 51 ;; Three
+
+x5:
     dq 0
-    dq 51
+    dq 52 ;; Four
 
 end: 
     mov rax, 60
@@ -35,8 +39,8 @@ _start:
         lea rsi, [x1 + r8 * SCALE + OFFSET] 
         mov rdx, 1
         syscall
-
-        add r8, OFFSET
+        
         cmp qword [x1 + r8 * SCALE], 0 
         jz end
+        add r8, OFFSET
     jmp .loop    
