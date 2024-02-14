@@ -6,7 +6,7 @@ global _start
 
 section .data
     %include "words.inc"
-    key: db "first keyff", 0
+    key: db "first key", 0
     msg: db "Value not found", 0
     MSG_SIZE equ $-msg
 
