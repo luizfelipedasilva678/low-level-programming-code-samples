@@ -1,18 +1,14 @@
-%include "colon.inc"
-%define OFFSET 8
-
-extern print_newline
+extern find_word
 extern print_string
-extern string_length
+
 
 global _start
 
 section .data
-    colon "third key", third_element
-    
-    colon "second key", second_element
-
-    colon "first key", first_element
+    %include "words.inc"
+    key: db "first keyff", 0
+    msg: db "Value not found", 0
+    MSG_SIZE equ $-msg
 
 section .text
 
@@ -21,20 +17,26 @@ end:
     mov rdi, 0
     syscall
 
+print_result:
+    mov rdi, rax
+    call print_string
+    jmp end
+
+nothing_found:
+    mov rax, 1
+    mov rdi, 2
+    mov rsi, msg
+    mov rdx, MSG_SIZE
+    syscall
+
+    jmp end
+
 _start:
-    mov r9, next
+    mov rdi, key
+    mov rsi, next
+    call find_word
 
-    .loop:
-        lea rdi, [r9 + OFFSET]
-        call print_string
+    cmp rax, 0
+    jne print_result
 
-        call print_newline
-
-        mov r9, qword [r9]
-        cmp r9, 0
-        jz end 
-    jmp .loop
-
-
-
-
+    jmp nothing_found
