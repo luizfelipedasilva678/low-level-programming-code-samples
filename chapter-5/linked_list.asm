@@ -7,23 +7,23 @@ section .text
 
 x1: 
     dq x2
-    dq 48 ;; Zero
+    dq '0'
 
 x2:
     dq x3
-    dq 49 ;; One
+    dq '1'
 
 x3:
     dq x4
-    dq 50 ;; Two
+    dq '2'
 
 x4:
     dq x5
-    dq 51 ;; Three
+    dq '3'
 
 x5:
     dq 0
-    dq 52 ;; Four
+    dq '4'
 
 end: 
     mov rax, 60
@@ -36,7 +36,7 @@ _start:
     .loop:
         mov rax, 1
         mov rdi, 1
-        lea rsi, qword [r9 + 8] 
+        lea rsi, qword [r9 + OFFSET] 
         mov rdx, 1
         syscall
 
