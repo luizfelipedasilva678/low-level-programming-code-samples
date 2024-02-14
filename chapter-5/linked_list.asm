@@ -1,6 +1,5 @@
 
 %define OFFSET 8
-%define SCALE 2
 
 global _start
 
@@ -32,16 +31,16 @@ end:
     syscall
 
 _start:
-    mov r8, 0
+    mov r9, x1
 
     .loop:
         mov rax, 1
         mov rdi, 1
-        lea rsi, [x1 + r8 * SCALE + OFFSET] 
+        lea rsi, qword [r9 + 8] 
         mov rdx, 1
         syscall
-        
-        cmp qword [x1 + r8 * SCALE], 0 
+
+        mov r9, qword [r9]
+        cmp r9, 0
         jz end
-        add r8, OFFSET
-    jmp .loop    
+    jmp .loop
