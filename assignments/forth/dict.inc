@@ -37,5 +37,5 @@ cfa:
     add rdi, 8
     call string_length
     pop rdi
-    lea rax, [rdi + 8 + rax + 2]
+    lea rax, [rdi + 8 + rax + 2] ;; 2 is for the flags and the null terminator
     ret
