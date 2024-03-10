@@ -67,7 +67,7 @@ print_uint:
     .loop:
         xor rdx, rdx
         div r8
-        or dl, 48 
+        or dl, 48
         dec rdi
         mov [rdi], dl
         test rax, rax

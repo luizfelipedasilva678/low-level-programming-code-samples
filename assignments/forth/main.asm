@@ -17,3 +17,9 @@ _start:
 
     mov rdi, rax
     call find_word
+
+    mov rdi, rax
+    call cfa
+    
+    mov rax, [rax]
+    jmp rax

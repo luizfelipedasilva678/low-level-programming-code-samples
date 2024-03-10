@@ -1,7 +1,7 @@
 global find_word
 
 extern string_equals
-
+extern string_length
 section .text
 
 find_word:
@@ -31,3 +31,11 @@ find_word:
     .not_found:
         mov rax, 0
         ret
+
+cfa:
+    push rdi
+    add rdi, 8
+    call string_length
+    pop rdi
+    lea rax, [rdi + 8 + rax + 2]
+    ret
