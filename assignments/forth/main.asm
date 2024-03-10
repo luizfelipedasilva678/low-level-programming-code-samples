@@ -1,12 +1,19 @@
-%include "macro.asm"
+global _start
 
+extern read_word
 
-native '+', plus
-    pop rax
-    add [rsp], rax
-    jmp next
+section .bss
+    input_buf: resb 1024
 
-native '-', minus
-    pop rax
-    add rax, [rsp]
-    jmp next
+%include "words.inc"
+%include "dict.inc"
+
+section .text
+
+_start:
+    mov rdi, input_buf
+    mov rsi, 1024
+    call read_word
+
+    mov rdi, rax
+    call find_word
