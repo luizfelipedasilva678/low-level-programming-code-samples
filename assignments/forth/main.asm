@@ -1,25 +1,29 @@
 global _start
+%include "macro.inc"
 
-extern read_word
-
-section .bss
-    input_buf: resb 1024
+%define pc r15
+%define w r14
+%define rstack r13
 
 %include "words.inc"
-%include "dict.inc"
+section .bss
+    resq 1023
+    rstack_start: resq 1
+    input_buf: resb 1024
+
+section .data
+    message: db 'test', 0
+    last_word: dq lw
+    program_stub: dq 0
+    interpreter_stub: dq xt_interpreter
 
 section .text
 
+next: 
+    mov w, pc
+    add pc, 8
+    mov w, [w]
+    jmp [w]
+
 _start:
-    mov rdi, input_buf
-    mov rsi, 1024
-    call read_word
-
-    mov rdi, rax
-    call find_word
-
-    mov rdi, rax
-    call cfa
-    
-    mov rax, [rax]
-    jmp rax
+    jmp init_impl

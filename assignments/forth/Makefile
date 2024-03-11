@@ -12,4 +12,4 @@ lib.o: lib.inc
 	$(AS) $(ASFLAGS) lib.inc
 
 clean:
-	rm main.o lib.o dict.o
+	rm main.o lib.o 

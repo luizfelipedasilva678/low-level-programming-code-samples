@@ -1,9 +1,9 @@
-%define last_word 0
+%define lw 0
 
 %macro native 3
     section .data
         w_%2:
-            dq last_word
+            dq lw
             db %1, 0
             db %3
         xt_%2:
@@ -11,7 +11,7 @@
     section .text
         %2_impl:
     
-    %define last_word w_%2
+    %define lw w_%2
 %endmacro
 
 %macro native 2
@@ -21,13 +21,13 @@
 %macro colon 3
     section .data
         w_%2:
-            dq last_word
+            dq lw
             db %1, 0
             db %3
         xt_%2:
             dq docol_impl
     
-    %define last_word w_%2
+    %define lw w_%2
 %endmacro
 
 %macro colon 2

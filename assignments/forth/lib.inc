@@ -1,7 +1,6 @@
 global exit
 global string_length
 global print_string
-
 global print_newline
 global print_uint
 global print_int
