@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": false,
   "code-runner.executorMap": {
-    "c": "cd $dir && gcc $fileName -ansi -Wall -Werror -pedantic-errors -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "c": "cd $dir && gcc $fileName -Wall -Werror -pedantic-errors -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
   },
   "files.associations": {
     "*.css": "postcss",
