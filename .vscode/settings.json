@@ -5,6 +5,8 @@
   },
   "files.associations": {
     "*.css": "postcss",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "type_traits": "c",
+    "stdio.h": "c"
   }
 }
